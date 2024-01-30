@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Postitus;
+import com.example.demo.response.ResponseHandler;
 import com.example.demo.service.PostitusService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +21,8 @@ public class PostitusController {
 
     // Read specific postitus details from DB
     @GetMapping("{nimi}")
-    public Postitus getPostDetails(@PathVariable("nimi") String nimi){
-        return postitusService.getPostitus(nimi);
-
+    public ResponseEntity<Object> getPostDetails(@PathVariable("nimi") String nimi){
+        return ResponseHandler.responseBuilder("Requested postituse details are given here", HttpStatus.OK, postitusService.getPostitus(nimi) );
     }
 
     // Read all postitus details from DB
