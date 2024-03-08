@@ -4,7 +4,10 @@ import com.example.demo.exception.PostitusNotFoundException;
 import com.example.demo.model.Postitus;
 import com.example.demo.repository.PostitusRepository;
 import com.example.demo.service.PostitusService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -12,8 +15,9 @@ import java.util.List;
 public class PostitusServiceImpl implements PostitusService {
 
 
-    PostitusRepository postitusRepository;
+    private final PostitusRepository postitusRepository;
 
+    @Autowired
     public PostitusServiceImpl(PostitusRepository postitusRepository) {
         this.postitusRepository = postitusRepository;
     }
@@ -33,10 +37,15 @@ public class PostitusServiceImpl implements PostitusService {
         return "Successfully updated";
     }
 
+
     @Override
     public String deletePostitus(String nimi) {
-        postitusRepository.deleteById(nimi);
-        return "Successfully deleted";
+        if (postitusRepository.existsById(nimi)) {
+            postitusRepository.deleteById(nimi);
+            return "Postitus details deleted successfully";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Postitus with nimi " + nimi + " not found");
+        }
     }
 
     @Override

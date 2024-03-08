@@ -11,7 +11,6 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<PostitusList />} />
                     <Route path="/add" element={<AddPostitus />} />
-                    {/* More routes can be added here */}
                 </Routes>
             </Suspense>
         </Router>
