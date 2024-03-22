@@ -39,21 +39,21 @@ public class PostitusServiceImpl implements PostitusService {
 
 
     @Override
-    public String deletePostitus(String nimi) {
-        if (postitusRepository.existsById(nimi)) {
-            postitusRepository.deleteById(nimi);
+    public String deletePostitus(int id) {
+        if (postitusRepository.existsById(id)) {
+            postitusRepository.deleteById(id);
             return "Postitus details deleted successfully";
         } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Postitus with nimi " + nimi + " not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Postitus with nimi " + id + " not found");
         }
     }
 
     @Override
-    public Postitus getPostitus(String nimi) {
-        if(postitusRepository.findById(nimi).isEmpty()){
+    public Postitus getPostitus(int id) {
+        if(postitusRepository.findById(id).isEmpty()){
             throw new PostitusNotFoundException("Requested postitus does not exist");
         }
-        return postitusRepository.findById(nimi).get();
+        return postitusRepository.findById(id).get();
     }
 
     @Override

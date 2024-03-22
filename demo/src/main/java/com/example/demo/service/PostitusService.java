@@ -7,7 +7,7 @@ import java.util.List;
 public interface PostitusService {
     public String createPostitus(Postitus postitus);
     public String updatePostitus(Postitus postitus);
-    public String deletePostitus(String nimi);
-    public Postitus getPostitus(String nimi);
+    public String deletePostitus(int id);
+    public Postitus getPostitus(int id);
     public List<Postitus> getAllPostitused();
 }

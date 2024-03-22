@@ -1,14 +1,14 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="postitus_info")
 public class Postitus {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nimi;
     private String teekond;
     private String kuupäev;
@@ -17,11 +17,16 @@ public class Postitus {
     public Postitus() {
     }
 
-    public Postitus(String nimi, String teekond, String kuupäev, String kellaaeg) {
+    public Postitus(int id, String nimi, String teekond, String kuupäev, String kellaaeg) {
+        this.id = id;
         this.nimi = nimi;
         this.teekond = teekond;
         this.kuupäev = kuupäev;
         this.kellaaeg = kellaaeg;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNimi() {
@@ -54,5 +59,9 @@ public class Postitus {
 
     public void setKellaaeg(String kellaaeg) {
         this.kellaaeg = kellaaeg;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

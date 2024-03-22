@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		Postitus postitus1 = new Postitus("Meus", "trt-tln", "01-01-24", "15:30");
+		Postitus postitus1 = new Postitus(1, "Meus", "trt-tln", "01-01-24", "15:30");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 

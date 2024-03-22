@@ -21,9 +21,9 @@ public class PostitusController {
     }
 
     // Read specific postitus details from DB
-    @GetMapping("{nimi}")
-    public ResponseEntity<Object> getPostDetails(@PathVariable("nimi") String nimi){
-        return ResponseHandler.responseBuilder("Requested postituse details are given here", HttpStatus.OK, postitusService.getPostitus(nimi) );
+    @GetMapping("{id}")
+    public ResponseEntity<Object> getPostDetails(@PathVariable("id") int id){
+        return ResponseHandler.responseBuilder("Requested postituse details are given here", HttpStatus.OK, postitusService.getPostitus(id) );
     }
 
     // Read all postitus details from DB
@@ -45,9 +45,9 @@ public class PostitusController {
         return "Post details updated successfully";
     }
 
-    @DeleteMapping("{nimi}")
-    public String deletePostDetails(@PathVariable("nimi") String nimi){
-        postitusService.deletePostitus(nimi);
+    @DeleteMapping("{id}")
+    public String deletePostDetails(@PathVariable("id") int id){
+        postitusService.deletePostitus(id);
         return "post details deleted successfully";
     }
 
