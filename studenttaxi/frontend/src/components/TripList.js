@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import styles from './App.module.css';
+import styles from '../styles/App.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const PostitusList = () => {
+const TripList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -60,4 +60,4 @@ const PostitusList = () => {
     );
 };
 
-export default PostitusList;
+export default TripList;

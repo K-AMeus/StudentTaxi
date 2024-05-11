@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from './App.module.css';
+import styles from '../styles/App.module.css';
 import { useNavigate } from 'react-router-dom';
 
 
-const AddPostitus = () => {
+const AddTrip = () => {
     const [post, setPost] = useState({ nimi: '', teekond: '', kuupäev: '', kellaaeg: '' });
     const navigate = useNavigate();
 
@@ -93,4 +93,4 @@ const AddPostitus = () => {
     );
 };
 
-export default AddPostitus;
+export default AddTrip;
